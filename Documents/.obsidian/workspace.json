@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "24a7ece84e2d9159",
@@ -188,7 +188,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "3fa2ba396a65605f",
+  "active": "3adba09218813bb8",
   "lastOpenFiles": [
     "Diagrams/Screenshot From 2026-09-23 11-12-10.png",
     "DrawioFiles/ContainerDiagram.drawio",
