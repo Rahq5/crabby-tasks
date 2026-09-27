@@ -1,6 +1,7 @@
 use core::task;
-use std::io;
+ use std::io;
 
+#[derive(Debug)]
 struct Task{
     task_name: String,
     status: bool,  //this should be an enum
@@ -8,40 +9,33 @@ struct Task{
     extra: String
 }
 
+struct rectangle{
+    width: u32,
+    height: u32,
+}
+
+impl rectangle{
+    fn area(&self)->u32{
+        self.width * self.height
+    }
+
+    fn perimeter(&self) -> u32{
+        (self.width + self.height) + 2
+    }
+}
+
 fn main(){
 
-
-    let mut task_name = String::new();
-    let mut importance= String::new(); 
-
-
-    println!("enter task name");
-    io::stdin()
-        .read_line(& mut task_name)
-        .expect("failed   to  read line");
-
-    println!("enter task importance");
-    io::stdin()
-        .read_line(& mut importance)
-        .expect("failed   to  read line");
-
-
-    let importance: i32 = importance.trim().parse().expect("this is not a fucking number");
-
-    let task1 = build_task(task_name, importance);
-
-    let task2 = Task{
-        task_name: String::from("drive he cat"),
-        ..task1
+    let rect1 = rectangle{
+        width: 12,
+        height: 45,
     };
 
-    
-
-      println!("\n\nthe name of task is:{}\n and the importance is:{} \n and the status is{}",task2.task_name, task2.importance, task2.status);
-      println!("\n\nthe name of task is:{}\n and the importance is:{} \n and the status is{}",task1.task_name, task1.importance, task1.status);
-  
-   
+    println!("{} is the area of the rectangle",rect1.area());
+    println!("{} is the perimeter of the rectangle",rect1.perimeter());
 }
+
+
 
 fn build_task(task_name:String, importance:i32)->Task{
 
@@ -54,4 +48,5 @@ fn build_task(task_name:String, importance:i32)->Task{
 
     task
 }
+
 
