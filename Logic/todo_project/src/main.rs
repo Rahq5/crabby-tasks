@@ -1,10 +1,8 @@
-mod Task_entity;
-
-use Task_entity::Task;
+mod entities;
 
 fn main() {
     // create a new Task instance using the constructor
-    let mut task = Task::new(String::from("Learn Rust"), false, 5);
+    let mut task = Task::new(String::from("Learn Rust"), false, 5,String::from("something"));
 
     // print the initial state using the getters
     println!("Name: {}", task.name_getter());
@@ -24,3 +22,8 @@ fn main() {
     println!("Updated Importance: {}", task.importance_getter());
 }
 
+/*
+fix :
+
+- line 5 says it cant see Task module
+*/

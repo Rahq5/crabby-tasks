@@ -1,21 +1,31 @@
-#[derive(Debug)]
+/*
+fix:
 
-// defined a public task struct with fields
+- fix getters and setters
+
+*/
+
+
+use super::TaskStatusEnum::{TaskImportance,TaskStatusCheck}; // this should import the enum classes from the enums file
+
+#[derive(Debug)]
 pub struct Task{
     name: String,
-    status: bool,
-    importance: i32,
+    status: TaskStatusCheck,
+    importance: TaskImportance,
+    description: String
 }
 
 // Task implementation
 impl Task{
 
     // constructor: returns a Task type after being initilized
-    pub fn new(name: String, status:bool, importance: i32)->Self{
+    pub fn new(name: String, status:TaskStatusCheck, importance: TaskImportance, description: String)->Self{
         Self{
             name,
             status,
             importance,
+            description,
         }
     }
 
@@ -48,4 +58,3 @@ impl Task{
         self.importance =importance;
     }
 }
-
