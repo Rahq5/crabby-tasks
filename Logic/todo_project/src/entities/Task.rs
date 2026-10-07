@@ -35,26 +35,33 @@ impl Task{
         self.name.clone()
     }
 
-    pub fn status_getter(&self)->bool{
-        self.status
+    pub fn status_getter(&self)-> &TaskStatusCheck{
+        &self.status
     }
 
-    pub fn importance_getter(&self)->i32{
-        self.importance
+    pub fn importance_getter(&self)-> &TaskImportance{
+        &self.importance
+    }
+
+    pub fn description_getter(&self) -> &str {
+        &self.description
     }
 
     // setters
-
     //using mut here cuz you gonna update some data
     pub fn name_setter(&mut self, name:String){
         self.name =name;
     }
 
-    pub fn status_setter(&mut self, status:bool){
+    pub fn status_setter(&mut self, status:TaskStatusCheck){
         self.status =status;
     }
 
-    pub fn importance_setter(&mut self, importance:i32){
+    pub fn importance_setter(&mut self, importance:TaskImportance){
         self.importance =importance;
+    }
+
+    pub fn description_setter(&mut self, description: String) {
+        self.description = description;
     }
 }

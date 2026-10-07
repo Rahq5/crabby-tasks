@@ -9,5 +9,6 @@ pub enum TaskStatusCheck{
 pub enum TaskImportance{
     LOW,
     MEDIUM,
-    HIGH
+    HIGH,
+    NONE
 }
