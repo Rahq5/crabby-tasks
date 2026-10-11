@@ -1,6 +1,6 @@
 mod entities;
 use entities::Task::Task;
-use std::io;
+use std::io::{self, stdin};
 use crate::entities::TaskStatusEnum::{TaskImportance::{self, NONE}, TaskStatusCheck::{self, TODO}};
 
 
@@ -8,95 +8,85 @@ use crate::entities::TaskStatusEnum::{TaskImportance::{self, NONE}, TaskStatusCh
 /*
 TODO:
 
-- make a function that takes user input and name it creation, task struct should be printed in main func scope
-
+- make a method that shows three things:
+    1. welcome message
+    2. all TODO status tasks
+    3. show options
 
 */
 
 
-fn main() {
-  //test_task();
+fn fetch_tasks(){
 
-  /*
-  here i was trying to make some primtive way to take input for 
-  all fields of task struct , but stuck at something where when i note the 
-  task as "done" it prints TODO instead, probably a string problem  
-
-  the fix is when i revealed the what really is being saved , i saw that it didnt flush or
-  get rid of the old input so it kept gathering all things on each other like in this 
-  example output that gathers both task name and status "clean the dishes \ndone"
-  so you have to flush the input method each time you use it 
-   */
-
-  let mut temp = String::new();
-  
-  read_line(&mut temp, "Name");
-  let mut name = temp.trim().to_string();
-  
-
-  read_line(&mut temp, "status");
-
-  println!("{:?}",temp.trim());
-  let mut status = match temp.trim() {
-  
-      "done" => TaskStatusCheck::DONE,
-      "todo" => TaskStatusCheck::TODO,
-      _      => TaskStatusCheck::TODO
-  };
-
-  println!("{} \n{:?}",name,status);
- 
+    // this function should read the saved TODO tasks and get show them 
 }
 
-fn read_line(temp:&mut String, label:&str){
+fn greetings_and_show_options(){
+    // this function welcome the user
+    // and show options 
 
-    println!("{}: ",label);
-    io::stdin().read_line(temp).unwrap();
+    println!("
+        #####################################################################
+        
+                                    welcome user! 
+
+        ####################################################################
+
+        please choose an option to proceed with the below tasks:
+        Create: enter 1 
+        Update: enter 2
+        Remove: enter 3
+        Show:   enter 4
+    
+    ");
 
 }
 
-fn create_task() {
+fn take_option()->i32{
 
-    let mut temp = String::new();
+    // function made just to take input of option from user 
+
+
+    println!("please enter a number from the list");
+
+    let mut input = String::new();
+
+    io::stdin()
+        .read_line(&mut input)
+        .expect("error reading line");
+
+    let input:i32 = input.trim().parse().expect("enter a valid number"); 
+    
+    input
+
+}
+
+fn main (){
+
+    greetings_and_show_options();
+
+    loop {
+        let mut input= take_option();
+
+        match input{
+            1 => {println!("choosed Creation"); break;},
+            2 => {println!("choosed Update"); break; },
+            3 => {println!("choosed Remove"); break;},
+            4 => {println!("chooosed Show"); break;},
+            _ => {
+                println!("## ERROR: please choose a number from the list ##");
+                //greetings_and_show_options();
+            }
+
+
+        }
+    }
+
    
 
-    io::stdin()
-        .read_line(&mut temp,)
-        .expect("input a valid name for the task");
-
-    io::stdin()
-        .read_line(&mut temp)
-        .expect("input a valid status for the task");
-
-    io::stdin()
-        .read_line(&mut temp)
-        .expect("input a valid importance for the task");
-
-    io::stdin()
-        .read_line(&mut temp)
-        .expect("input a valid description for the task");
-
-
 }
 
-fn test_task(){
-      // create a new Task instance using the constructor
-    let mut task = Task::new(String::from("Learn Rust"), TODO,NONE,String::from("something"));
 
-    println!("{:#?}",task);
-    
-    // update the fields using the setters
-    task.name_setter(String::from("clean the dished"));
-    task.status_setter(TaskStatusCheck::DONE);
-    task.importance_setter(TaskImportance::MEDIUM);
-    task.description_setter(String::from("then dry them and put them in the trash"));
-
-
-    println!("{:#?}",task);
-    
-
-    // print the state again after updating
-}
 
 
 
