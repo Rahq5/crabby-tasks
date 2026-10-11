@@ -1,26 +1,61 @@
-mod IpAddressTypesEnums;
-use IpAddressTypesEnums::IpAddressType;
-
-#[derive(Debug)]
-    struct IpAddr {
-        kind: IpAddressType,
-        address: String,
-    }
 
 fn main (){
-    let home = IpAddr {
-        kind: IpAddressType::IPv4,
-        address: String::from("127.0.0.1"),
-    };
-
-    let loopback = IpAddr {
-        kind: IpAddressType::IPv6,
-        address: String::from("::1"),
-    };
-
-    println!("{:?}",home);// why it doesnt accept that ??
-    println!("{:?}",loopback);
+    let ip1 = IpType::IPv6;
+    process(ip1);
 }
+
+
+fn process (ip:IpType){
+    println!("Received: {:#?}", ip);
+    ip.call();
+    
+}
+
+
+// output expected:
+// 
+#[derive(Debug)]
+
+enum IpType{
+    IPv4,
+    IPv6
+}
+
+impl IpType{
+    fn call(&self){
+        match self {
+            IpType::IPv4 => println!("it's ipv4 type"),
+            IpType::IPv6 => println!("it's ipv6 type")
+        }
+    }
+ }
+
+#[derive(Debug)]
+struct test{
+    name:String,
+    age: i32,
+    gender: bool
+}
+
+#[derive(Debug)]
+struct device{
+
+    name: String,
+    ip: IpType,
+    something:String
+
+
+}
+
+#[derive(Debug)]
+enum size{
+	big,
+	med,
+	small,
+	none
+}
+
+
 
 /* 
 output:
