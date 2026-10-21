@@ -1,8 +1,9 @@
 mod entities;
 use entities::Task::Task;
-use std::io::{self, stdin};
-use crate::entities::TaskStatusEnum::{TaskImportance::{self, NONE}, TaskStatusCheck::{self, TODO}};
-
+use std::io::stdin;
+use entities::TaskStatusEnum::TaskImportance::*;
+use entities::TaskStatusEnum::TaskStatusCheck::*;
+//use crate::entities::TaskStatusEnum::{TaskImportance::{self, NONE}, TaskStatusCheck::{self, TODO}};
 
 
 /*
@@ -51,7 +52,7 @@ fn take_option()->i32{
 
     let mut input = String::new();
 
-    io::stdin()
+    stdin()
         .read_line(&mut input)
         .expect("error reading line");
 
