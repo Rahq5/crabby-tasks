@@ -5,8 +5,6 @@ pub fn showAllServices(){
 
 // this should direct the call to database thing
 
-    println!(" you reached the service layer great !!!");
-
     let content = load_tasks();
 
     for t in &content{
