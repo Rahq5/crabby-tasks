@@ -7,3 +7,5 @@ ID,name,status,importance,description
 6,Add delete command,TODO,LOW,Remove a task by ID and rewrite the file
 7,Backup the CSV file,DONE,NONE,Copy tasks.csv to tasks.bak before every write
 8,Handle missing file,TODO,MEDIUM,Create an empty file with the header when tasks.csv does not exist
+1,dfv,TODO,HIGH,dfv
+
