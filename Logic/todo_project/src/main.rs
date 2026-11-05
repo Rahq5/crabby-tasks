@@ -1,19 +1,9 @@
 mod entities;
-use entities::Task::Task;
-use std::io::{self, stdin};
-use crate::entities::TaskStatusEnum::{TaskImportance::{self, NONE}, TaskStatusCheck::{self, TODO}};
+mod database_interface;
+mod service;
 
-
-
-/*
-TODO:
-
-- make a method that shows three things:
-    1. welcome message
-    2. all TODO status tasks
-    3. show options
-
-*/
+use std::io::stdin;
+use service::showAll_Service::showAllServices; // complete the function call 
 
 
 fn fetch_tasks(){
@@ -33,10 +23,11 @@ fn greetings_and_show_options(){
         ####################################################################
 
         please choose an option to proceed with the below tasks:
-        Create: enter 1 
-        Update: enter 2
-        Remove: enter 3
-        Show:   enter 4
+        Create:     enter 1 
+        Update:     enter 2
+        Remove:     enter 3
+        Show:       enter 4
+        ShowAll:    enter 5
     
     ");
 
@@ -51,7 +42,7 @@ fn take_option()->i32{
 
     let mut input = String::new();
 
-    io::stdin()
+    stdin()
         .read_line(&mut input)
         .expect("error reading line");
 
@@ -62,8 +53,12 @@ fn take_option()->i32{
 }
 
 fn main (){
+// main user will act as a frontend for the user 
+
 
     greetings_and_show_options();
+    // greet and show options to user 
+    
 
     loop {
         let mut input= take_option();
@@ -73,6 +68,7 @@ fn main (){
             2 => {println!("choosed Update"); break; },
             3 => {println!("choosed Remove"); break;},
             4 => {println!("chooosed Show"); break;},
+            5 => {println!("chooosed ShowAll"); showAllServices();},
             _ => {
                 println!("## ERROR: please choose a number from the list ##");
                 //greetings_and_show_options();
@@ -85,6 +81,8 @@ fn main (){
    
 
 }
+
+
 
 
 

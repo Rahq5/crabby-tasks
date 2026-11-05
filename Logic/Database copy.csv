@@ -1,0 +1,9 @@
+ID,name,status,importance,description
+1,Finish Rust file IO notes,DONE,HIGH,Write the Obsidian notes for std::fs and std::io
+2,Parse tasks from CSV,TODO,HIGH,Read tasks.csv and load every row into a Vec of Task
+3,Convert strings to enums,TODO,MEDIUM,Map TODO/DONE and LOW/MEDIUM/HIGH/NONE from text to enum values
+4,Print tasks as a table,TODO,MEDIUM,Use format specifiers to align the columns in the terminal
+5,Auto-increment task ID,TODO,HIGH,Use max ID plus one when adding a new task
+6,Add delete command,TODO,LOW,Remove a task by ID and rewrite the file
+7,Backup the CSV file,DONE,NONE,Copy tasks.csv to tasks.bak before every write
+8,Handle missing file,TODO,MEDIUM,Create an empty file with the header when tasks.csv does not exist
