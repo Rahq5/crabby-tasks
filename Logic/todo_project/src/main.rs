@@ -1,15 +1,19 @@
 mod entities;
 mod database_interface;
 mod service;
+mod helpers;
 
 use std::io::stdin;
+
 use service::showAll_Service::showAllServices; // complete the function call 
+use service::create_task::write_task;
 
+use crate::service::create_task::create_task;
 
-fn fetch_tasks(){
+// use serde::Deserialize;
+// #[derive(Deserialize)]
+// pub struct storage { pub path:String}
 
-    // this function should read the saved TODO tasks and get show them 
-}
 
 fn greetings_and_show_options(){
     // this function welcome the user
@@ -64,7 +68,7 @@ fn main (){
         let mut input= take_option();
 
         match input{
-            1 => {println!("choosed Creation"); break;},
+            1 => {println!("choosed Creation"); create_task();},
             2 => {println!("choosed Update"); break; },
             3 => {println!("choosed Remove"); break;},
             4 => {println!("chooosed Show"); break;},
