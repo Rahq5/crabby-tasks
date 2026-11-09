@@ -37,7 +37,7 @@ fn main (){
     let tasks = map_to_task(task);
 
     create_task("Database.csv", &tasks);
-    println!("{:?}",tasks);
+    println!("{:?}",&tasks);
 
 }
 
@@ -210,21 +210,22 @@ fn next_id(path: &str) -> std::io::Result<i32> {
 }
 
 fn create_task(path: &str, task: &Task) -> std::io::Result<()> {
-    // 1. `task` is received as a borrowed parameter (&Task): we only read it
+    // 1. `task` is received as a borrowed parameter (&Task): only read it
 
-    // 2. open the database in append mode: the write cursor starts at the
-    //    end of the file, so "the last place" is found by the OS itself
+    // open the database in append mode, the write cursor starts at the
+    // end of the file so "the last place" is found by the OS itself
+    // credit: AI for thi line
     let mut file = OpenOptions::new().append(true).open(path)?;
 
-    // 3. map the Task object into one CSV line
-    //    {:?} prints the enum variant name, e.g. Done
+    // map the Task object into one CSV line
+    // {:?} prints the enum variant name, e.g. Done
     let row = format!(
         "{},{},{:?},{:?},{}\n",
         task.id_getter(),
         task.name_getter(),
         task.status_getter(),
         task.importance_getter(),
-        task.description_getter() // guessed name, rename to your real description getter
+        task.description_getter() 
     );
 
     println!("###\ninside saving of DB and it's working!\n###\n ");
